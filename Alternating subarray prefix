@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+#define ll long long int
+#define u unsigned
+#define lf long double
+#define loop_(i,a,b) for(int i = a ; i< b ; i++)
+#define loop_reverse(i,a,b) for(int i = b ; i >= a ; i--)
+#define loop_input(i,b) loop_(i,0,b)
+#define fast ios_base::sync_with_stdio(false); cin.tie(NULL);
+#define precision_set(x) cout.precision(x);
+#define precision(x) cout<<setprecision(x)<<
+#define distance(x1,y1,x2,y2) sqrt(pow(x1-x2,2)+pow(y1-y2,2));
+#define pb push_back
+using namespace std;
+
+typedef vector<int> VI;
+typedef pair<int,int> PI;
+typedef vector<PI> VPI;
+typedef pair<VI,VI> PVI;
+
+void solver(){
+int n;
+cin>>n;
+int arr[n];
+loop_input(i,n)
+cin>>arr[i];
+int curr = 1;
+bool last_positive = true, curr_positive = true;
+    last_positive =  arr[n-1] > 0 ? true : false ;
+    arr[n-1] = 1;
+for(int i = n-2;i>=0;i--){
+    curr_positive =  arr[i] > 0 ? true : false ;
+if(curr_positive != last_positive)
+    curr++;
+else
+    curr = 1;
+arr[i]  = curr;
+last_positive = curr_positive;
+}
+for(int i = 0;i<n;i++)
+    cout<<arr[i]<<" ";
+cout<<endl;
+return;
+}
+
+
+int main(){
+int t;
+cin>>t;
+while(t-->0)
+solver();
+    return 0;
+}
